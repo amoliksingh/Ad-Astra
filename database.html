@@ -32,7 +32,6 @@
           day = calendar.slice(3, 5);
           year = calendar.slice(6, 10);
           queryTime = year + '-' + month + '-' + day;
-          alert(queryTime);
 
           if(minDec >= -90 && maxDec <= 90){
             if(minRa >= 0 && maxRa <= 24){
@@ -40,13 +39,14 @@
               //Date is today or past
                 var arrayLength = DATA.length;
                 for (var i = 0; i < arrayLength; i++) {
-                    document.getElementById("image"+i).style.display = "block";
+                    document.getElementById("image"+i).style.display = "none";
                     var clean = DATA[i]['CLEAN'];
                     var objctDec = DATA[i]['OBJCTDEC'];
                     var objctRa = DATA[i]['OBJCTRA'];
                     if (clean == typeofimage && objctDec >= minDec && objctDec <= maxDec){
                       if(objctRa >= minRa && objctRa <= maxRa){
-                        document.getElementById("image"+i).style.display = "none";
+                        document.getElementById("image"+i).style.display = "block";
+                        responseList.push(DATA[i]['filename']);
                       }
                     }
                     //console.log(DATA[i]);
@@ -84,7 +84,7 @@
     <form name="applyChanges">
       <fieldset>
   <p class="panel-heading">
-    Repositories
+    Apply Changes
   </p>
   <a class="panel-block is-active">
             <p class="filter-title">Declination:</p> between: <input type="text" id="declination1" size="20" name="declination1">
