@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+  <html>
+    <title>CSA Space Apps Challenge</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        function check(){
+          var today = new Date();
+          var date = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
+          var declination1, declination2, ascension1, ascension2, calendar, shutter, typeofimage, mode;
+        
+          declination1 = document.getElementById("declination1").value;
+          declination2 = document.getElementById("declination2").value;
+          ascension1 = document.getElementById("ascension1").value;
+          ascension2 = document.getElementById("ascension2").value;
+          calendar = document.getElementById("calendar").value;
+          shutter = document.applyChanges.shutter.value;
+          typeofimage = document.applyChanges.typeofimage.value;
+          mode = document.applyChanges.mode.value;
+
+          if(Math.min(declination1, declination2) >= -90 && Math.max(declination1, declination2) <= 90){
+
+          }
+          else{
+            alert("Please enter values between -90 and 90.");
+          }
+
+          if(Math.min(ascension1, ascension2) >= 0 && Math.max(ascension1, ascension2) <= 24){
+            
+          }
+          else{
+            alert("Please enter values between 0 and 24.");
+          }
+
+          if(parseInt(calendar.slice(0,2)) <= parseInt(date.slice(0,2)) && parseInt(calendar.slice(3,5)) <= parseInt(date.slice(3,5)) && parseInt(calendar.slice(6)) <= parseInt(date.slice(6))){
+            //Date is today or past
+          }
+          else{
+            alert("Please enter a value that is not in the future.");
+          }
+
+          if(shutter == "1"){
+            //Open
+          }
+          else if(shutter == "2"){
+            //Close
+          }
+
+          if(typeofimage == "1"){
+              //Clean
+          }
+          else if(typeofimage == "2"){
+            //Raw
+          }
+
+          if(mode == "1"){
+            //Five-Point
+          }
+          else if(mode == "2"){
+            //Slew
+          }
+        }
+      </script>
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="/resources/demos/style.css">
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+        $(function() {
+          $( "#datepicker" ).datepicker();
+        } );
+      </script>
+
+  <body>
+    <form name="applyChanges">
+      <fieldset>
+        <legend style= "font-size:25px; color:purple; font:Impact;">Filter Changes</legend>
+        <ul style="list-style-type:none;">
+          <li style="text-align:left; font-size:18px;">
+            <br>
+            <p>Declination:</p>
+              Declination between: <input type="text" id="declination1" size="20" name="declination1">
+              and: <input type="text" id="declination2" size="20" name="declination2">
+          </li>
+          <br>
+          <li style="text-align:left; font-size:18px;">
+            <br>
+            <p>Ascension:</p>
+              Ascension between: <input type="text" id="ascension1" size="20" name="ascension1">
+              and: <input type="text" id="ascension2" size="20" name="ascension2">
+          </li>
+          <br>
+          <li style="text-align:left; font-size:18px;">
+            <br>
+            <p>Shutter:</p>
+              <div>
+              <input type="radio" name="shutter" value="1"
+                 checked>
+              <label for="open">Open</label>
+            </div>
+
+            <div>
+              <input type="radio" name="shutter" value="2">
+              <label for="close">Close</label>
+            </div>
+          </li>
+          <br>
+          <li style="text-align:left; font-size:18px;">
+            <br>
+            <p>Type of Image:</p>
+              <div>
+              <input type="radio" name="typeofimage" value="1"
+                 checked>
+              <label for="clean">Clean</label>
+            </div>
+
+            <div>
+              <input type="radio" name="typeofimage" value="2">
+              <label for="raw">Raw</label>
+            </div>
+          </li>
+          <br>
+          <li style="text-align:left; font-size:18px;">
+            <br>
+            <p>Mode:</p>
+              <div>
+              <input type="radio" name="mode" value="1"
+                 checked>
+              <label for="five-point">Five-Point</label>
+            </div>
+
+            <div>
+              <input type="radio" name="mode" value="2">
+              <label for="slew">Slew</label>
+            </div>
+          </li>
+        </ul>  
+        <p>Date: <input type="text" id="datepicker"></p>
+      </fieldset>
+      <button type="button" onclick="check()">Apply Changes</button>      
+  </div>
+
+  </body>
+</html>
