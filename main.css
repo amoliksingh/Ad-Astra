@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+
+body{
+	background-image: url(ISS.png);
+	background-size: 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1.title{
+	color: #fff;
+	text-align: center;
+}
+
+.container{
+
+}
+
+.danger{
+	background: red;
+}
+
+p.filter-title{
+	color: #3298dc;
+}
