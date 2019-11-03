@@ -19,6 +19,14 @@
         font-size: 30px;
       }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
       /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -142,7 +150,7 @@
                         imagesViewHtml = imagesViewHtml + "<div class=\"column is-one-quarter-desktop is-half-tablet\"><div class=\"card\"><div id = \"";
                         imagesViewHtml = imagesViewHtml + fileName + "\" class=\"card-image\"><figure class=\"image is-3by2\"><img src=\"Images/";
                         imagesViewHtml = imagesViewHtml + fileName;
-                        imagesViewHtml = imagesViewHtml + "_rgb.jpg\" alt=\"" + fileName + "<br> Declination: " + objctDec + "&#176 <br> Ascension: " + objctRa + "&#176 <br> Date: " + DATA[i]["TIMESYS"];
+                        imagesViewHtml = imagesViewHtml + "_rgb.jpg\" alt=\" <a href='ftp://ftp.asc-csa.gc.ca/users/OpenData_DonneesOuvertes/pub/NEOSSAT/ASTRO/2018/281/46P/FINE_POINT/" + fileName + ".fits'>" + fileName +".fits</a> <br> Declination: " + objctDec + "&#176 <br> Ascension: " + objctRa + "&#176 <br> Date: " + DATA[i]["TIMESYS"];
                         imagesViewHtml = imagesViewHtml + "\"></figure><div class=\"card-content is-overlay is-clipped\"><span class=\"tag is-info\">";
                         imagesViewHtml = imagesViewHtml + fileName;
                         imagesViewHtml = imagesViewHtml + "</span></div></div></div></div>";
@@ -255,7 +263,7 @@
 
             </div>
             <div class="grid-item">
-              /api/v3/image/:image_id;
+              <img src="background.jpg" alt="" class="center">
             </div>
           </fieldset>
         </form>
