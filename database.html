@@ -110,7 +110,7 @@
           declination2 = document.getElementById("declination2").value;
           ascension1 = document.getElementById("ascension1").value;
           ascension2 = document.getElementById("ascension2").value;
-          calendar = document.getElementById("datepicker").value;
+          calendar = document.getElementById("pickdate").value;
           shutter = document.applyChanges.shutter.value;
           typeofimage = document.applyChanges.typeofimage.value;
           mode = document.applyChanges.mode.value;
@@ -118,13 +118,16 @@
           maxDec = Math.max(declination1, declination2);
           minRa = Math.min(ascension1, ascension2);
           maxRa = Math.max(ascension1, ascension2);
-          month = calendar.slice(0, 2);
-          day = calendar.slice(3, 5);
-          year = calendar.slice(6, 10);
+          year = calendar.slice(0, 4);
+          month = calendar.slice(5, 7);
+          day = calendar.slice(8, 10);
           queryTime = year + '-' + month + '-' + day;
           if(minDec >= -90 && maxDec <= 90){
             if(minRa >= 0 && maxRa <= 24){
-              if(parseInt(calendar.slice(0,2)) <= todayMonth && parseInt(calendar.slice(3,5)) <= todayDay && parseInt(calendar.slice(6)) <= todayYear){
+              if(parseInt(year) > todayYear || parseInt(year)==todayYear && parseInt(month) > todayMonth || parseInt(year)==todayYear && parseInt(month)==todayMonth && parseInt(day) > todayDay){
+                alert("Please enter a value that is not in the future.");
+              }
+              else{
               //Date is today or past
                 var arrayLength = DATA.length;
                 var imagesViewHtml = "";
@@ -169,9 +172,6 @@
                   }
                 }
               }
-              else{
-                alert("Please enter a value that is not in the future.");
-              }
             }
             else{
               alert("Please enter values between 0 and 24.");
@@ -202,12 +202,12 @@
           <div class="grid-container">
             <div class="grid-item">
               <a>
-                        <p>&nbsp; &nbsp; Declination: </p> &nbsp; &nbsp; between: <input type="text" id="declination1" size="20" name="declination1">
-                          &nbsp; and: <input type="text" id="declination2" size="20" name="declination2">
+                        <p>&nbsp; &nbsp; Declination: </p> &nbsp; &nbsp; between: <input type="text" id="declination1" size="20" name="declination1" value="-90">
+                          &nbsp; and: <input type="text" id="declination2" size="20" name="declination2" value="90">
               </a>
               <a>
-               <p>&nbsp; &nbsp; Ascension: </p> &nbsp; &nbsp; between: <input type="text" id="ascension1" size="20" name="ascension1">
-                          &nbsp; and: <input type="text" id="ascension2" size="20" name="ascension2">
+               <p>&nbsp; &nbsp; Ascension: </p> &nbsp; &nbsp; between: <input type="text" id="ascension1" size="20" name="ascension1" value="0">
+                          &nbsp; and: <input type="text" id="ascension2" size="20" name="ascension2" value="24">
               </a>
               <a>
                 <p>&nbsp; &nbsp; Shutter: &nbsp;
