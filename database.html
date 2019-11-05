@@ -99,6 +99,7 @@
     <script src="data.js"></script>
     <script>
         function check(){
+          //Initalize variables
           var responseList = [];
           var today = new Date();
           var todayMonth = today.getMonth() + 1;
@@ -122,6 +123,8 @@
           month = calendar.slice(5, 7);
           day = calendar.slice(8, 10);
           queryTime = year + '-' + month + '-' + day;
+
+          //Check if conditions are met
           if(minDec >= -90 && maxDec <= 90){
             if(minRa >= 0 && maxRa <= 24){
               if(parseInt(year) > todayYear || parseInt(year)==todayYear && parseInt(month) > todayMonth || parseInt(year)==todayYear && parseInt(month)==todayMonth && parseInt(day) > todayDay){
@@ -137,6 +140,7 @@
                     var objctRa = DATA[i]['OBJCTRA'];
                     if (clean == 1-typeofimage && objctDec >= minDec && objctDec <= maxDec){
                       if(objctRa >= minRa && objctRa <= maxRa){
+                        //Generate HTML for images
                         var fileName = DATA[i]['filename'];
                         imagesViewHtml = imagesViewHtml + "<div class=\"column is-one-quarter-desktop is-half-tablet\"><div class=\"card\"><div id = \"";
                         imagesViewHtml = imagesViewHtml + fileName + "\" class=\"card-image\"><figure class=\"image is-3by2\"><img src=\"Images/";
@@ -150,6 +154,8 @@
                     }
                 }
                 document.getElementById("imagesView").innerHTML = imagesViewHtml;
+
+                //Set onClick function for pop-up for each image that meets the conditions
                 for (var i = 0; i < responseList.length; i++){
                   var fileName = responseList[i];
                   console.log(fileName);
